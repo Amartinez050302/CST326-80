@@ -7,10 +7,11 @@ public class LevelParser : MonoBehaviour
     public string filename;
     public GameObject rockPrefab;
     public GameObject brickPrefab;
-    public GameObject brick1Prefab;
+    public GameObject goalPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
     public Transform environmentRoot;
+    public GameObject spikePrefab;
 
     // --------------------------------------------------------------------------
     void Start()
@@ -62,8 +63,13 @@ public class LevelParser : MonoBehaviour
                     Instantiate(questionBoxPrefab, new Vector3(column, row, 0f), Quaternion.identity);
                 if (letter == 'b')
                     Instantiate(brickPrefab, new Vector3(column, row, 0f), Quaternion.identity);
+
                 if (letter == 's')
                     Instantiate(stonePrefab, new Vector3(column, row, 0f), Quaternion.identity);
+                if (letter == 'g')
+                    Instantiate(goalPrefab, new Vector3(column, row, 0f), Quaternion.identity);
+                if (letter == 't')
+                    Instantiate(spikePrefab, new Vector3(column, row, 0f), Quaternion.identity);
                 // Todo - Instantiate a new GameObject that matches the type specified by letter
                 // Todo - Position the new GameObject at the appropriate location by using row and column
                 // Todo - Parent the new GameObject under levelRoot

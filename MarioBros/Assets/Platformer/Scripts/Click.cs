@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Click : MonoBehaviour
 {
-    private void OnMouseDown()
+    private int score = 0;
+
+    private void OnTriggerEnter(Collider other)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (other.gameObject.CompareTag("Player"))
         {
-            // Check if the ray hit this game object
-            if (hit.collider.gameObject == gameObject)
-            {
-                // Destroy this game object when it is clicked with the mouse
-                Destroy(gameObject);
-            }
+           
+            Destroy(gameObject);
+
+            score += 100;
+
+           
+            TextMeshProUGUI scoreText = GameObject.Find("MarioScore").GetComponent<TextMeshProUGUI>();
+            scoreText.SetText("Score: " + score);
         }
     }
 }

@@ -5,15 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-private Rigidbody2D myRigidbody2D;
-public float speed = 5;
+    private Rigidbody2D myRigidbody2D;
+    public float speed = 5;
+    AudioSource audioSource;
+    public AudioClip enemyDeath;
+    private List<Enemy> enemies = new List<Enemy>();
 
-   
-private List<Enemy> enemies = new List<Enemy>();
-
-void Start()
+    void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         FindEnemies();
         Fire();
     }
@@ -38,13 +39,13 @@ void Start()
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            audioSource.PlayOneShot(enemyDeath);
 
-          
             foreach (Enemy enemy in enemies)
             {
                 if (enemy != null)
                 {
-                    enemy.speed *= 2f;
+                    enemy.speed *= 1.2f;
                 }
             }
 
@@ -58,13 +59,13 @@ void Start()
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            audioSource.PlayOneShot(enemyDeath);
 
-           
             foreach (Enemy enemy in enemies)
             {
                 if (enemy != null)
                 {
-                    enemy.speed *= 2f;
+                    enemy.speed *= 1.2f;
                 }
             }
 
@@ -78,13 +79,13 @@ void Start()
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            audioSource.PlayOneShot(enemyDeath);
 
-           
             foreach (Enemy enemy in enemies)
             {
                 if (enemy != null)
                 {
-                    enemy.speed *= 2f;
+                    enemy.speed *= 1.2f;
                 }
             }
 
@@ -98,13 +99,13 @@ void Start()
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            audioSource.PlayOneShot(enemyDeath);
 
-            
             foreach (Enemy enemy in enemies)
             {
                 if (enemy != null)
                 {
-                    enemy.speed *= 2f;
+                    enemy.speed *= 1.2f;
                 }
             }
 
